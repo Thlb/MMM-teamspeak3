@@ -71,12 +71,12 @@ The following properties can be configured:
 		<tr>
 			<td><code>host</code></td>
 			<td>Hostname/IP of the Teamspeak Server.  
-        <br>
-        <br>
-        <b>Required</b>
-        <br>
-        <b>Possible values:</b> <code>localhost</code>, <code>url</code> or a IP
-        <br>
+				<br>
+				<br>
+				<b>Required</b>
+				<br>
+				<b>Possible values:</b> <code>localhost</code>, <code>url</code> or a IP
+				<br>
 				<b>Default value:</b> <code>null</code>
 			</td>
 		</tr>
@@ -84,10 +84,10 @@ The following properties can be configured:
 		<tr>
 			<td><code>login</code></td>
 			<td>Teamspeak ServerQuery login.  
-        <br>
-        <br>
-        <b>Required</b>
-        <br>
+				<br>
+				<br>
+				<b>Required</b>
+				<br>
 				<b>Default value:</b> <code>null</code>
 			</td>
 		</tr>
@@ -95,10 +95,10 @@ The following properties can be configured:
 		<tr>
 			<td><code>passwd</code></td>
 			<td>Teamspeak ServerQuery password.  
-        <br>
-        <br>
-        <b>Required</b>
-        <br>
+				<br>
+				<br>
+				<b>Required</b>
+				<br>
 				<b>Default value:</b> <code>null</code>
 			</td>
 		</tr>
@@ -106,10 +106,10 @@ The following properties can be configured:
 		<tr>
 			<td><code>displayIcon</code></td>
 			<td>Display FontAwesome user icon
-        <br>
-        <br>
-        <b>Possible values:</b> <code>true</code> or <code>false</code>
-        <br>
+				<br>
+				<br>
+				<b>Possible values:</b> <code>true</code> or <code>false</code>
+				<br>
 				<b>Default value:</b> <code>true</code>
 			</td>
 		</tr>
@@ -117,10 +117,10 @@ The following properties can be configured:
 		<tr>
 			<td><code>iconSize</code></td>
 			<td>Size of FontAwesome user icon
-        <br>
-        <br>
-        <b>Possible values:</b> <code>xsmall</code>, <code>small</code>, <code>medium</code>, <code>large</code>, <code>xlarge</code>
-        <br>
+				<br>
+				<br>
+				<b>Possible values:</b> <code>xsmall</code>, <code>small</code>, <code>medium</code>, <code>large</code>, <code>xlarge</code>
+				<br>
 				<b>Default value:</b> <code>small</code>
 			</td>
 		</tr>
@@ -128,11 +128,22 @@ The following properties can be configured:
 		<tr>
 			<td><code>textSize</code></td>
 			<td>Size of nicknames
-        <br>
-        <br>
-        <b>Possible values:</b> <code>xsmall</code>, <code>small</code>, <code>medium</code>, <code>large</code>, <code>xlarge</code>
-        <br>
+				<br>
+				<br>
+				<b>Possible values:</b> <code>xsmall</code>, <code>small</code>, <code>medium</code>, <code>large</code>, <code>xlarge</code>
+				<br>
 				<b>Default value:</b> <code>xsmall</code>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><code>msgEmptyServer</code></td>
+			<td>Display message when server is empty
+				<br>
+				<br>
+				<b>Possible values:</b> Any string you want!
+				<br>
+				<b>Default value:</b> <code>Nobody's online !</code>
 			</td>
 		</tr>
 

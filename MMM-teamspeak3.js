@@ -6,8 +6,9 @@ Module.register('MMM-teamspeak3', {
 		passwd: '',
 		displayIcon: true,
 		textSize: 'small',
-		iconSize: 'xsmall'
+		iconSize: 'xsmall',
 
+		msgEmptyServer: 'Nobody\'s online !'
 	},
 
 	getStyles: function() {
@@ -16,7 +17,7 @@ Module.register('MMM-teamspeak3', {
 
 	start: function() {
 		// Checking server configuration
-	    if(this.config.host == '' || this.config.login == '') {
+		if(this.config.host == '' || this.config.login == '') {
 			this.clientList = 'No server configuration detected';
 		}
 		else{
@@ -30,8 +31,12 @@ Module.register('MMM-teamspeak3', {
 
 
 	socketNotificationReceived: function(notification, clist) {
-		if (notification === 'TS3CLIENTLIST') {
+		if(notification === 'TS3CLIENTLIST') {
 			this.clientList = clist;
+			this.updateDom();
+		}
+		if(notification === 'TS3CLIENTLISTEMPTY') {
+			this.clientList = this.config.msgEmptyServer;
 			this.updateDom();
 		}
 	},

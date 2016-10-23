@@ -64,7 +64,14 @@ module.exports = NodeHelper.create({
 
 				// Cleaning the client list
 				clist = self.purgeClientList(response);
-				self.sendSocketNotification('TS3CLIENTLIST', clist);
+		
+				// Empty list : nobody's connected
+				if(clist.length == 0){
+					self.sendSocketNotification('TS3CLIENTLISTEMPTY', clist);
+				}
+				else{
+					self.sendSocketNotification('TS3CLIENTLIST', clist);
+				}
 			});
 		}
 		else{
@@ -85,8 +92,7 @@ module.exports = NodeHelper.create({
 				list.push(client.client_nickname);
 			}
 		}
-
-		// console.log(util.inspect(list));
+		//console.log(util.inspect(list));
 		return list;
 	}
 
