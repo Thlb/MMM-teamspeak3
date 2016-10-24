@@ -1,0 +1,25 @@
+{
+  "name": "MMM-teamspeak3",
+  "version": "0.0.1",
+  "description": "This MagicMirror module, display client list of a Teamspeak3 server.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thlb0/MMM-teamspeak3.git"
+  },
+  "keywords": [
+    "MagicMirror",
+    "smart mirror",
+    "teamspeak",
+    "client list"
+  ],
+  "author": "",
+  "contributors": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Thlb0/MMM-teamspeak3/issues"
+  },
+  "homepage": "https://github.com/Thlb0/MMM-teamspeak3#readme",
+  "dependencies": {
+    "node-teamspeak": "latest"
+  }
+}
