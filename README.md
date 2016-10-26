@@ -47,9 +47,10 @@ modules: [
     header: 'My TeamSpeak3 server',
     config: {
             host: 'my.teamspeakhost.com',
+			port: '12345', // not required if default port (10011) is used
             login: 'queryuser',
             passwd: 'password'
-    },
+    }
   },
 ]
 ```
@@ -78,6 +79,16 @@ The following properties can be configured:
 				<b>Possible values:</b> <code>localhost</code>, <code>url</code> or a IP
 				<br>
 				<b>Default value:</b> <code>null</code>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><code>port</code></td>
+			<td>Port of the Teamspeak Server.  
+				<br>
+				<br>
+				<br>
+				<b>Default value:</b> <code>10011</code> (Default TeamSpeak3 query port)
 			</td>
 		</tr>
 
@@ -133,6 +144,17 @@ The following properties can be configured:
 				<b>Possible values:</b> <code>xsmall</code>, <code>small</code>, <code>medium</code>, <code>large</code>, <code>xlarge</code>
 				<br>
 				<b>Default value:</b> <code>xsmall</code>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><code>icon</code></td>
+			<td>Fontawesome user icon 
+				<br>
+				<br>
+				<b>Possible values:</b> Any FontAwesome icon : <code>fa-user</code>, <code>fa-circle-o</code> ...
+				<br>
+				<b>Default value:</b> <code>fa-user</code>
 			</td>
 		</tr>
 		

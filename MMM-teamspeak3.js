@@ -2,12 +2,13 @@ Module.register('MMM-teamspeak3', {
 
 	defaults: {
 		host: '',
+		port: '10011', // Default query port
 		login: '',
 		passwd: '',
 		displayIcon: true,
 		textSize: 'small',
 		iconSize: 'xsmall',
-
+		icon: 'fa-user',
 		msgEmptyServer: 'Nobody\'s online !'
 	},
 
@@ -16,29 +17,64 @@ Module.register('MMM-teamspeak3', {
 	},
 
 	start: function() {
+		this.clientList = null;
+		this.message = null;
+		
 		// Checking server configuration
 		if(this.config.host == '' || this.config.login == '') {
-			this.clientList = 'No server configuration detected';
+			this.message = 'No server configuration detected';
 		}
 		else{
-			this.clientList = 'Loading...';
+			this.message = this.translate('LOADING');
 
-			// Connexion to Teamspeak3 server
-			this.sendSocketNotification('CONFIG', this.config);
-			this.sendSocketNotification('LOGIN');
+			// Connection to Teamspeak3 server
+			this.sendSocketNotification('TS3-CONFIG', this.config);
+			this.sendSocketNotification('TS3-LOG-IN');
 		}
 	},
 
 
-	socketNotificationReceived: function(notification, clist) {
-		if(notification === 'TS3CLIENTLIST') {
-			this.clientList = clist;
-			this.updateDom();
-		}
-		if(notification === 'TS3CLIENTLISTEMPTY') {
-			this.clientList = this.config.msgEmptyServer;
-			this.updateDom();
-		}
+	socketNotificationReceived: function(notification, data) {
+		this.clientList = null;
+		this.message = null;
+		
+		switch (notification){
+			case 'TS3-CLIENT-LIST':
+				this.clientList = data;
+				this.updateDom();
+			break;
+			
+			case 'TS3-CLIENT-LIST-EMPTY':
+				this.message = this.config.msgEmptyServer;
+				this.updateDom();
+			break;
+			
+			case 'TS3-ERROR':
+				switch(data){
+					case 'ENOTFOUND':
+						this.message = 'Unable to connect to host';
+					break;
+					
+					case 'ECONNREFUSED':
+						this.message = 'Connection refused : check host/port';
+					break;
+					
+					case 'ECONNRESET':
+						this.message = 'Connection reset by peer';
+					break;
+					
+					case 'ETIMEDOUT':
+						this.message = 'Connection timed out';
+					break;
+					
+					default:
+						this.message = 'An error occured, please check logs';
+					break;
+				}
+				this.message += ' (code: ' + data + ')';
+				this.updateDom();
+			break;	
+		}	
 	},
 
 
@@ -46,17 +82,17 @@ Module.register('MMM-teamspeak3', {
 	getDom: function() {
 		var wrapper = document.createElement("div");
 
-		// Checking client list :
-		// if not array -> error message
+		// Display message/error if set
 		// else -> client list
-		if(!Array.isArray(this.clientList)){
-			wrapper.className = 'align-right small';
-			wrapper.innerHTML = this.clientList;
+		if(this.message){
+			wrapper.className = 'dimmed light small';
+			wrapper.innerHTML = this.message;
 			return wrapper;
 		}
 
 		var table = document.createElement("table");
-
+		wrapper.appendChild(table);
+		
 		for(var c in this.clientList){
 			var client = this.clientList[c];
 
@@ -74,12 +110,12 @@ Module.register('MMM-teamspeak3', {
 				row.appendChild(iconCell);
 
 				var icon = document.createElement("span");
-				icon.className = "fa fa-user";
+				icon.className = "fa " + this.config.icon;
 				iconCell.appendChild(icon);
 			}
 
 		}
-		return table;
+		return wrapper;
 
 	},
 

@@ -1,6 +1,6 @@
 {
   "name": "MMM-teamspeak3",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "This MagicMirror module, display client list of a Teamspeak3 server.",
   "repository": {
     "type": "git",

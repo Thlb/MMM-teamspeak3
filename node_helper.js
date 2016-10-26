@@ -1,6 +1,6 @@
 var NodeHelper = require("node_helper");
 var TeamSpeakClient = require('node-teamspeak');
-var util = require('util');
+//var util = require('util');
 
 
 module.exports = NodeHelper.create({
@@ -18,17 +18,22 @@ module.exports = NodeHelper.create({
 		var self = this;
 
 		// Retrieving config from MMM-teamspeak3.js
-		if(notification === 'CONFIG'){
+		if(notification === 'TS3-CONFIG'){
 			this.config = payload;
 			console.log('Retrieving server settings');
 		}
 
 		// Connexion to TeamSpeak3 server
-		if(notification === 'LOGIN'){
+		if(notification === 'TS3-LOG-IN'){
 			// Host
 			console.log('Connecting to Teamspeak3 server: ' + self.config.host);
-			self.cl = new TeamSpeakClient(self.config.host);
-
+			
+			self.cl = new TeamSpeakClient(self.config.host, self.config.port);
+			self.cl.on('error', (err) => {
+				self.sendSocketNotification('TS3-ERROR', err.code);
+			 	console.error(err);
+			});
+			
 			console.log('Login: ' + self.config.login);
 			console.log('Password: *****');
 
@@ -39,7 +44,7 @@ module.exports = NodeHelper.create({
 					var msg = 'Connexion failed : ' + err.msg;
 					console.log(msg);
 					self.connected = false;
-					self.sendSocketNotification('TS3CLIENTLIST', msg);
+					self.sendSocketNotification('TS3-ERROR', msg);
 				}
 				else{
 					self.cl.send("use", {sid: 1}, function(err, response, rawResponse){
@@ -67,10 +72,10 @@ module.exports = NodeHelper.create({
 		
 				// Empty list : nobody's connected
 				if(clist.length == 0){
-					self.sendSocketNotification('TS3CLIENTLISTEMPTY', clist);
+					self.sendSocketNotification('TS3-CLIENT-LIST-EMPTY', clist);
 				}
 				else{
-					self.sendSocketNotification('TS3CLIENTLIST', clist);
+					self.sendSocketNotification('TS3-CLIENT-LIST', clist);
 				}
 			});
 		}
