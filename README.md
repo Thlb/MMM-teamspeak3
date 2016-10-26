@@ -1,7 +1,7 @@
 # Module: MMM-teamspeak3
 This [MagicMirror](https://github.com/MichMich/MagicMirror) module, display client list of a Teamspeak3 server.
 
-![TeamSpeak3 visualisation](https://github.com/Thlb0/MMM-teamspeak3/blob/master/.github/screenshot-01.png)
+![TeamSpeak3 visualisation](https://github.com/Thlb0/MMM-teamspeak3/blob/gh-pages/.github/screenshot-01-min.png)
 
 ## Dependencies
 - An installation of [MagicMirror<sup>2</sup>](https://github.com/MichMich/MagicMirror)
