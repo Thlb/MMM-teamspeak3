@@ -38,7 +38,10 @@ Configure the module in your `config.js` file.
 
 ## Using the module
 
-To use this module, add it to the modules array in the `config/config.js` file:
+To use this module, add it to the modules array in the `config/config.js` file. 
+
+<b>Note : </b> If you rent the TeamSpeak server, you probably need to specify the <code>serverPort</code> or <code>sid</code> 
+
 ```javascript
 modules: [
   {
@@ -46,10 +49,13 @@ modules: [
     position: 'top_right',
     header: 'My TeamSpeak3 server',
     config: {
-            host: 'my.teamspeakhost.com',
-			port: '12345', // not required if default port (10011) is used
-            login: 'queryuser',
-            passwd: 'password'
+      host: 'my.teamspeakhost.com',
+      serverPort: '9987', // Default server port (not required if default port (9987) is used)
+      sid: '', // Server ID 
+      serverQueryPort: '10011', // Default server query port (not required if default port (10011) is used)
+      login: 'queryuser',
+      passwd: 'password',
+      refreshInterval: 10 // in seconds
     }
   },
 ]
@@ -83,7 +89,24 @@ The following properties can be configured:
 		</tr>
 		
 		<tr>
-			<td><code>port</code></td>
+			<td><code>serverPort</code></td>
+			<td>Port of the Teamspeak Server.  
+				<br>
+				<br>
+				<br>
+				<b>Default value:</b> <code> 9987 </code> (Default TeamSpeak3 voice port)
+			</td>
+		</tr>
+		<tr>
+			<td><code>sid</code></td>
+			<td>ID of the Teamspeak Server.  
+				<br>
+				<br>
+				<br>
+				<b>Default value:</b> <code>''</code> 			</td>
+		</tr>
+		<tr>
+			<td><code> serverQueryPort </code></td>
 			<td>Port of the Teamspeak Server.  
 				<br>
 				<br>
@@ -91,7 +114,6 @@ The following properties can be configured:
 				<b>Default value:</b> <code>10011</code> (Default TeamSpeak3 query port)
 			</td>
 		</tr>
-
 		<tr>
 			<td><code>login</code></td>
 			<td>Teamspeak ServerQuery login.  
@@ -113,7 +135,14 @@ The following properties can be configured:
 				<b>Default value:</b> <code>null</code>
 			</td>
 		</tr>
-    
+   		<tr>
+			<td><code>refreshInterval</code></td>
+			<td>The refresh interval of queries (in seconds).
+				<br>
+				<br>
+				<b>Default value:</b> <code>10</code>
+			</td>
+		</tr>
 		<tr>
 			<td><code>displayIcon</code></td>
 			<td>Display FontAwesome user icon

@@ -1,40 +1,52 @@
+/* Magic Mirror
+ * Module: MMM-teamspeak3
+ *
+ * MIT Licensed.
+ */
+
 Module.register('MMM-teamspeak3', {
 
 	defaults: {
 		host: '',
-		port: '10011', // Default query port
+		serverPort: '9987', // Default server port
+		sid: '', // Server ID
+		serverQueryPort: '10011', // Default server query port
 		login: '',
 		passwd: '',
 		displayIcon: true,
 		textSize: 'small',
 		iconSize: 'xsmall',
 		icon: 'fa-user',
-		msgEmptyServer: 'Nobody\'s online !'
+		msgEmptyServer: 'Nobody\'s online !',
+		refreshInterval: 10 // in seconds
 	},
 
 	getStyles: function() {
+		"use strict";
 		return ["font-awesome.css"];
 	},
 
 	start: function() {
+		"use strict";
 		this.clientList = null;
 		this.message = null;
 		
 		// Checking server configuration
-		if(this.config.host == '' || this.config.login == '') {
+		if(this.config.host === '' || this.config.login === '') {
 			this.message = 'No server configuration detected';
 		}
 		else{
 			this.message = this.translate('LOADING');
 
 			// Connection to Teamspeak3 server
-			this.sendSocketNotification('TS3-CONFIG', this.config);
-			this.sendSocketNotification('TS3-LOG-IN');
+			this.sendSocketNotification('TS3-INITIALIZE', this.config);
+			this.sendSocketNotification('TS3-LOGIN');
 		}
 	},
 
 
 	socketNotificationReceived: function(notification, data) {
+		"use strict";
 		this.clientList = null;
 		this.message = null;
 		
@@ -53,6 +65,10 @@ Module.register('MMM-teamspeak3', {
 				switch(data){
 					case 'ENOTFOUND':
 						this.message = 'Unable to connect to host';
+					break;
+					
+					case 'EPIPE':
+						this.message = 'Socket has been ended by the other party';
 					break;
 					
 					case 'ECONNREFUSED':
@@ -80,6 +96,7 @@ Module.register('MMM-teamspeak3', {
 
 	// Override dom generator.
 	getDom: function() {
+		"use strict";
 		var wrapper = document.createElement("div");
 
 		// Display message/error if set
