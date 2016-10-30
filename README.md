@@ -17,7 +17,7 @@ cd ~/MagicMirror/modules
 
 Clone this repository:
 ```
-git clone https://github.com/Thlb0/MMM-teamspeak3
+git clone https://github.com/Thlb/MMM-teamspeak3
 ```
 
 Navigate to the new `MMM-teamspeak3` folder and install the node dependencies.
