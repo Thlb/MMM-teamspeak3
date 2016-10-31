@@ -153,7 +153,16 @@ The following properties can be configured:
 				<b>Default value:</b> <code>true</code>
 			</td>
 		</tr>
-    
+    	<tr>
+			<td><code>textAlign</code></td>
+			<td>Text alignment
+				<br>
+				<br>
+				<b>Possible values:</b> <code>align-left</code> or <code>align-right</code>
+				<br>
+				<b>Default value:</b> Depending on module position: if bottom-right or top_right : <code>align-right</code>, else : <code>align-left</code>
+			</td>
+		</tr>
 		<tr>
 			<td><code>iconSize</code></td>
 			<td>Size of FontAwesome user icon
@@ -183,7 +192,7 @@ The following properties can be configured:
 				<br>
 				<b>Possible values:</b> Any FontAwesome icon : <code>fa-user</code>, <code>fa-circle-o</code> ...
 				<br>
-				<b>Default value:</b> <code>fa-user</code>
+				<b>Default value:</b> <code>fa-circle-o</code>
 			</td>
 		</tr>
 		
