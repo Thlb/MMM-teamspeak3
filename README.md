@@ -65,147 +65,18 @@ modules: [
 
 The following properties can be configured:
 
-<table width="100%">
-	<!-- why, markdown... -->
-	<thead>
-		<tr>
-			<th>Option</th>
-			<th width="100%">Description</th>
-		</tr>
-	<thead>
-	<tbody>
-
-		<tr>
-			<td><code>host</code></td>
-			<td>Hostname/IP of the Teamspeak Server.  
-				<br>
-				<br>
-				<b>Required</b>
-				<br>
-				<b>Possible values:</b> <code>localhost</code>, <code>url</code> or a IP
-				<br>
-				<b>Default value:</b> <code>null</code>
-			</td>
-		</tr>
-		
-		<tr>
-			<td><code>serverPort</code></td>
-			<td>Port of the Teamspeak Server.  
-				<br>
-				<br>
-				<br>
-				<b>Default value:</b> <code> 9987 </code> (Default TeamSpeak3 voice port)
-			</td>
-		</tr>
-		<tr>
-			<td><code>sid</code></td>
-			<td>ID of the Teamspeak Server.  
-				<br>
-				<br>
-				<br>
-				<b>Default value:</b> <code>''</code> 			</td>
-		</tr>
-		<tr>
-			<td><code> serverQueryPort </code></td>
-			<td>Port of the Teamspeak Server.  
-				<br>
-				<br>
-				<br>
-				<b>Default value:</b> <code>10011</code> (Default TeamSpeak3 query port)
-			</td>
-		</tr>
-		<tr>
-			<td><code>login</code></td>
-			<td>Teamspeak ServerQuery login.  
-				<br>
-				<br>
-				<b>Required</b>
-				<br>
-				<b>Default value:</b> <code>null</code>
-			</td>
-		</tr>
-
-		<tr>
-			<td><code>passwd</code></td>
-			<td>Teamspeak ServerQuery password.  
-				<br>
-				<br>
-				<b>Required</b>
-				<br>
-				<b>Default value:</b> <code>null</code>
-			</td>
-		</tr>
-   		<tr>
-			<td><code>refreshInterval</code></td>
-			<td>The refresh interval of queries (in seconds).
-				<br>
-				<br>
-				<b>Default value:</b> <code>10</code>
-			</td>
-		</tr>
-		<tr>
-			<td><code>displayIcon</code></td>
-			<td>Display FontAwesome user icon
-				<br>
-				<br>
-				<b>Possible values:</b> <code>true</code> or <code>false</code>
-				<br>
-				<b>Default value:</b> <code>true</code>
-			</td>
-		</tr>
-    	<tr>
-			<td><code>textAlign</code></td>
-			<td>Text alignment
-				<br>
-				<br>
-				<b>Possible values:</b> <code>align-left</code> or <code>align-right</code>
-				<br>
-				<b>Default value:</b> Depending on module position: if bottom-right or top_right : <code>align-right</code>, else : <code>align-left</code>
-			</td>
-		</tr>
-		<tr>
-			<td><code>iconSize</code></td>
-			<td>Size of FontAwesome user icon
-				<br>
-				<br>
-				<b>Possible values:</b> <code>xsmall</code>, <code>small</code>, <code>medium</code>, <code>large</code>, <code>xlarge</code>
-				<br>
-				<b>Default value:</b> <code>small</code>
-			</td>
-		</tr>
-    
-		<tr>
-			<td><code>textSize</code></td>
-			<td>Size of nicknames
-				<br>
-				<br>
-				<b>Possible values:</b> <code>xsmall</code>, <code>small</code>, <code>medium</code>, <code>large</code>, <code>xlarge</code>
-				<br>
-				<b>Default value:</b> <code>xsmall</code>
-			</td>
-		</tr>
-		
-		<tr>
-			<td><code>icon</code></td>
-			<td>Fontawesome user icon 
-				<br>
-				<br>
-				<b>Possible values:</b> Any FontAwesome icon : <code>fa-user</code>, <code>fa-circle-o</code> ...
-				<br>
-				<b>Default value:</b> <code>fa-circle-o</code>
-			</td>
-		</tr>
-		
-		<tr>
-			<td><code>msgEmptyServer</code></td>
-			<td>Display message when server is empty
-				<br>
-				<br>
-				<b>Possible values:</b> Any string you want!
-				<br>
-				<b>Default value:</b> <code>Nobody's online !</code>
-			</td>
-		</tr>
-
-	</tbody>
-</table>
+| Option                       | Description
+| ---------------------------- | -----------
+| `host`                       | Hostname/IP of the Teamspeak Server.<br><br>**Required**<br>**Possible values:** `localhost`, `url` or a IP<br>**Default value:** `null`
+| `serverPort`                 | Port of the Teamspeak Server.<br><br><br>**Default value:** ` 9987 ` (Default TeamSpeak3 voice port)
+| `sid`                        | ID of the Teamspeak Server.<br><br><br>**Default value:** `''`
+| `serverQueryPort`            | Port of the Teamspeak Server.<br><br><br>**Default value:** `10011` (Default TeamSpeak3 query port)
+| `login`                      | Teamspeak ServerQuery login.<br><br>**Required**<br>**Default value:** `null`
+| `passwd`                     | Teamspeak ServerQuery password.<br><br>**Required**<br>**Default value:** `null`
+| `refreshInterval`            | The refresh interval of queries (in seconds).<br><br>**Default value:** `10`
+| `displayIcon`                | Display FontAwesome user icon<br><br>**Possible values:** `true` or `false`<br>**Default value:** `true`
+| `textAlign`                  | Text alignment<br><br>**Possible values:** `align-left` or `align-right`<br>**Default value:** Depending on module position: if bottom-right or top_right : `align-right`, else : `align-left`
+| `iconSize`                   | Size of FontAwesome user icon<br><br>**Possible values:** `xsmall`, `small`, `medium`, `large`, `xlarge`<br>**Default value:** `small`
+| `textSize`	               | Size of nicknames<br><br>**Possible values:** `xsmall`, `small`, `medium`, `large`, `xlarge`<br>**Default value:** `xsmall`
+| `icon`                       | Fontawesome user icon <br><br>**Possible values:** Any FontAwesome icon : `fa-user`, `fa-circle-o` ...<br>**Default value:** `fa-circle-o`
+| `msgEmptyServer`             | Display message when server is empty<br><br>**Possible values:** Any string you want!<br>**Default value:** `Nobody's online !`
