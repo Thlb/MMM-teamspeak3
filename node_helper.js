@@ -60,6 +60,11 @@ module.exports = NodeHelper.create({
             console.error(self.consolePrefix + err);
         });
         
+        self.cl.on('close', () => {
+            self.connected = false;
+            console.log(self.consolePrefix + 'Connection closed, will attempt to reconnect');
+        });
+        
         console.log(self.consolePrefix + 'Login: ' + self.config.login);
         console.log(self.consolePrefix + 'Password: *****');
 
